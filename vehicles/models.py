@@ -26,6 +26,7 @@ class VehMaster(models.Model):
     def __str__(self):
         return self.Veh_Reg_No
 
+
 class VehWorkOrder(models.Model):
 
     Work_Order_No  = models.CharField(max_length=25, primary_key=True, blank=False, null=False)
@@ -42,3 +43,22 @@ class VehWorkOrder(models.Model):
     def __str__(self):
         return self.Work_Reg_No
 
+
+class VehTyres(models.Model):
+
+    Tyre_Reg_No = models.ForeignKey(VehMaster, verbose_name='Registration No', on_delete=models.CASCADE)
+    Tyre_Tracking  = models.CharField("Tyre No", max_length=25)
+    Tyre_Date  = models.DateField("Tyre Date")
+    Tyre_Shop  = models.CharField("Tyre Shop", max_length=30)
+    Inv_Customer_Contact = models.CharField("Contact No", max_length=15, blank=True, null=True)
+    Tyre_Price = models.DecimalField(max_digits=5, decimal_places=2)
+    Tyre_OSF = models.IntegerField("OSF", blank=True, null=True)
+    Tyre_NSF = models.IntegerField("NSF", blank=True, null=True)
+    Tyre_OSR = models.IntegerField("OSR", blank=True, null=True)
+    Tyre_NSR = models.IntegerField("NSR", blank=True, null=True)
+
+    def __str__(self):
+        return self.Tyre_Reg_No
+
+
+    
