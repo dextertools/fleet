@@ -1,0 +1,9 @@
+{% extends "vehicles/base.html" %}
+{% block title %}{{ vehmaster.Veh_Reg_No }}{% endblock %}
+{% block content %}
+<h1>{{ vehmaster.Veh_Reg_No }}</h1>
+<p class="date">
+ {{ vehmaster.VehMake }} by {{ vehmaster.Veh_Reg_No }}
+</p>
+{{ vehmaster.year|linebreaks }}
+{% endblock %}

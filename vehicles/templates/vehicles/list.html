@@ -1,0 +1,16 @@
+{% extends "vehicles/base.html" %}
+{% block title %}My Blog{% endblock %}
+{% block content %}
+<h1>My Blog</h1>
+{% for vehs in vehs %}
+<h2>
+<a href="{{ vehs.get_absolute_url }}">
+{{ vehs.Veh_Reg_No }}
+</a>
+</h2>
+<p class="cars">
+{{ vehs.Veh_Make }} {{ vehs.Veh_Moel }}
+</p>
+{{ vehs.Veh_year }}
+{% endfor %}
+{% endblock %}

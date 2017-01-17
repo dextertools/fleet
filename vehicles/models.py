@@ -2,9 +2,19 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 
+COLOR_CHOICES = (
+    ('red', 'Red'),
+    ('blue', 'Blue'),
+    ('grey', 'Grey'),
+    ('white', 'White'),
+    ('black', 'Black'),
+    ('silver', 'Silver'),
+    ('green', 'Green'),
+)
 
 class VehMaster(models.Model):
     Veh_Reg_No = models.CharField("Registration No", max_length=8, primary_key=True)
@@ -17,7 +27,7 @@ class VehMaster(models.Model):
     Veh_Sale_price = models.IntegerField('Sales Price', blank=True, null=True)
     Veh_Seats = models.IntegerField('No of Seats', blank=True, null=True)
     Veh_Horsepower = models.IntegerField('Power CC', blank=True, null=True)
-    Veh_Colour = models.CharField('Colour',max_length=20, blank=True, null=True)
+    Veh_Colour = models.CharField('Colour',max_length=20, blank=True, null=True, choices=COLOR_CHOICES)
     Veh_Fuel_Type = models.CharField('Fuel Type', max_length=10, blank=True, null=True)
     Veh_Engine_No = models.CharField('Engine No', max_length=20, blank=True, null=True)
     Veh_Chassis_No = models.CharField('Chassis No', max_length=20, blank=True, null=True)
@@ -41,7 +51,7 @@ class VehWorkOrder(models.Model):
     Work_Remaks = models.CharField("Remarks", max_length=200, blank=True, null=True)
 
     def __str__(self):
-        return self.Work_Reg_No
+        return str(self.Work_Reg_No)
 
 
 class VehTyres(models.Model):
@@ -58,7 +68,12 @@ class VehTyres(models.Model):
     Tyre_NSR = models.IntegerField("NSR", blank=True, null=True)
 
     def __str__(self):
-        return self.Tyre_Reg_No
+        return str(self.Tyre_Reg_No)
 
-
+#----------------- MOEL FORMS ---------------
     
+class VehMasterForm(ModelForm):
+    class Meta:
+        model = VehMaster
+        fields = ['Veh_Reg_No', 'Veh_Make', 'Veh_Model', 'Veh_Pur_date', 'Veh_Pur_price']
+

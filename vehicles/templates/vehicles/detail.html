@@ -1,0 +1,25 @@
+{% load staticfiles %}
+{{ vehicles.Veh_Reg_No }}
+
+<h1>{{ veh }}</h1>
+<h1>{{ vehmaster.Veh_Reg_No }}</h1>
+
+
+<form>
+
+    <table>
+    <th>Reg No</th>
+    <th>Make</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Purchase Date</th>
+    <tr>
+        <td>{{ vehmaster.Veh_Reg_No }}</td>
+        <td>{{ vehmaster.Veh_Make }}</td>
+        <td>{{ vehmaster.Veh_Model }}</td>
+        <td>{{ vehmaster.Veh_Year }}</td>
+        <td>{{ vehmaster.Veh_Pur_Date }}</td>
+    </Tr>    
+    </table>
+
+</form>

@@ -28,7 +28,7 @@ class VehMasterAdmin(admin.ModelAdmin):
     fields = [('Veh_Reg_No', 'Veh_Make', 'Veh_Model', 'Veh_Status', 'Veh_Year'),
               ('Veh_Engine_No', 'Veh_Chassis_No', 'Veh_Seats', 'Veh_Fuel_Type',
                'Veh_Horsepower', 'Veh_Colour'),
-              ('Veh_Sale_price', 'Veh_Pur_price', 'Veh_Sale_date', 'Veh_Pur_date')
+              ('Veh_Pur_price', 'Veh_Pur_date', 'Veh_Sale_date', 'Veh_Sale_price', )
               ]
     inlines = [VehWorkOrderInline]
 
@@ -72,6 +72,10 @@ class VehMasterTyres(admin.ModelAdmin):
     inlines = [VehTyresInline]    
 '''
 
+
 admin.site.register(VehMaster, VehMasterAdmin)
+admin.site.register(VehWorkOrder)
 admin.site.register(VehTyres, VehTyresAdmin)
+
 #admin.site.register(VehMaster, VehMasterTyres)
+

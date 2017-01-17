@@ -14,18 +14,33 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
-
+from django.contrib import admin
 from . import views
 
 app_name = 'vehicles'
 
 
 urlpatterns = [
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^$', views.vehs_list, name='list'),
+    url(r'^(?P<vehmaster_Veh_Reg_No>)/$', views.detail, name='detail'),
+    url(r'^(AB23 XYZ)/$', views.detail, name='detail'),
 
-    #url(r'^$', views.IndexView.as_view(), name='index'),
-    #url(r'^(?P<vehmaster_id>[0-9]+)/$', views.detail, name='detail'),
-    #url(r'^$', views.RepairView.as_view(), name='repair'),
 
 ]
 
 
+'''
+    #url(r'^vehicles/', include(fleet.urls)),
+    #url(r'^(AB23 XYZ)/$', views.detail, name='detail'),
+
+    #url(r'^({{ vehmaster.Veh_Reg_No }})/$', views.detail, name='detail'),    
+    #url(r'^(?P<vehicles_Veh_Reg_No>[0-9]+)/$', views.detail, name='detail'),
+    #url(r'^(?P<vehmaster_id>)$', views.detail, name='detail'),
+    #url(r'^/2/$', views.detail, name='detail'),
+
+    #url(r'^$', views.RepairView.as_view(), name='repair'),
+
+    #url(r'^(?P<vehmaster_id>[0-9]+)/$', views.detail, name='detail'),
+'''

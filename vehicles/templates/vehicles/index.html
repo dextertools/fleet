@@ -1,0 +1,43 @@
+{% load staticfiles %}
+{% if registeted_veh_list %}
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<link rel="stylesheet" type="text/css" href="{% static 'vehicles/style.css' %}" />
+
+</head>
+<body>
+<div id="content">
+{% block content %}
+<p> This is a Garage named Yorkshire Maintenence Solutions</P>
+{% endblock %}
+</div>
+<div id="sidebar">
+<h2>My Garage</h2>
+<p>Registered Cars</p>
+    <table>
+
+    <th>Reg No</th>
+    <th>Make</th>
+    <th>Model</th>
+    
+    {% for vehicles in registeted_veh_list %}      
+        <tr>
+        
+        <td><a href="/vehicles/{{ vehicles.Veh_Reg_No }}/">{{ vehicles.Veh_Reg_No }}</a></td>
+        <td>{{ vehicles.Veh_Make }}</td>
+        <td>{{ vehicles.Veh_Model }}</td>
+
+        </tr>
+    {% endfor %}
+    
+    </table>
+{% else %}
+    <p>No Vehicles are available.</p>
+{% endif %}
+</div>
+</body>
+</html>
+
